@@ -24,39 +24,80 @@
 			</p>
 			<br/>
 			<br/>
-			<textarea name="message" id = "message" readonly rows="20" cols="35">You awake to find yourself lost on an island you have never seen before. As you begin to move you have a choice on where to go.
+			<textarea name="textarea" id = "textarea" readonly rows="20" cols="35">You awake to find yourself lost on an island you have never seen before. As you begin to move you have a choice on where to go.
 			</textarea>
 			<br/>
 			<br/>
 			<script type ="text/javascript">
+			var North = false
+			var South = false
+			var East = false
+			var West = false 
+			var score = 0
+			function displayText(message){
+						var textarea = document.getElementById("textarea");
+						textarea.value = message;
+					}
 			/*North*/
 				function btnNorth_click(){
-				document.getElementById("message").value= "As you walk North you begin to see the beginning of a jungle. It is too thick so you can't see through.";
-					}
+				if (North == false) {
+			var message = "As you walk North you begin to see the beginning of a jungle. It is too thick so you can't see through";
+			displayText(message);
+			North = true;
+			score += 5;
+			document.getElementById("score").innerHTML = score;
+			} else {
+			var message = "As you walk North you begin to see the beginning of a jungle. It is too thick so you can't see through";
+			displayText(message); }
+			}
+					
 			/*South*/
 				function btnSouth_click(){
-				document.getElementById("message").value="You stumble upon what seems to be a cabin and find tools to help you survive. Congratulations";
-					}
+				if (South == false) {
+			var message = "You stumble upon what seems to be a cabin and find tools to help you survive. Congratulations";
+			displayText(message);
+			South = true;
+			score += 5;
+			document.getElementById("score").innerHTML = score;
+			} else {
+			var message = "You stumble upon what seems to be a cabin and find tools to help you survive. Congratulations";
+			displayText(message); }
+			}
+					
 			/*East*/
 				function btnEast_click(){
-				document.getElementById("message").value="The mountain in the East becomes bigger and bigger as you keep walking which doesn't allow you to walk any further.";
-					}
+				if (East == false) {
+			var message = "The mountain in the East becomes bigger and bigger as you keep walking which doesn't allow you to walk any further.";
+			displayText(message);
+			East = true;
+			score += 5;
+			document.getElementById("score").innerHTML = score;
+			} else {
+			var message = "The mountain in the East becomes bigger and bigger as you keep walking which doesn't allow you to walk any further.";
+			displayText(message); }
+			}
+				
 			/*West*/
 				function btnWest_click(){
-				document.getElementById("message").value="The West trail only creates more questions than answers when you come upon what seems to be a plane crash.";
-					}
+				if (West == false) {
+			var message = "The West trail only creates more questions than answers when you come upon what seems to be a plane crash.";
+			displayText(message);
+			West = true;
+			score += 5;
+			document.getElementById("score").innerHTML = score;
+			} else {
+			var message = "The West trail only creates more questions than answers when you come upon what seems to be a plane crash.";
+			displayText(message); }
+			}
+				
 			/*Score which adds five points on the first click*/ 
-				var score =0
-				function points(){
-					score +=5
-				document.getElementById("score").innerHTML =score;
-					}
+			
 			</script>
 		
-			<input type="button" value="North" onclick="btnNorth_click(); points();this.onclick=null" id="btnNorth"/>
-			<input type="button" value="West" onclick="btnWest_click(); points();this.onclick=null" id="btnWest"/>
-			<input type="button" value="East" onclick="btnEast_click(); points();this.onclick=null" id="btnEast"/>
-			<input type="button" value="South" onclick="btnSouth_click(); points();this.onclick=null" id="btnSouth"/>
+			<input type="button" value="North" onclick="btnNorth_click()"id="btnNorth"/>
+			<input type="button" value="West" onclick="btnWest_click()" id="btnWest"/>
+			<input type="button" value="East" onclick="btnEast_click()" id="btnEast"/>
+			<input type="button" value="South" onclick="btnSouth_click()" id="btnSouth"/>
 			  <br/>
 			  <br/>
 			  Your Score is <a id="score">0</a> points!
