@@ -29,7 +29,7 @@
 			<br/>
 			<br/>
 			<script type ="text/javascript">
-			
+		//* List of the global variables that are going to be use	
         var score = 0;
         var currentLoc = 0;
         var Location0 = 0;
@@ -42,56 +42,43 @@
         function init() {
             look();
         }
-    //*Had to divide the buttons by lowercase and uppercase because together it was giving me an issue  
+    //*Had to divide the buttons by lowercase and uppercase because together it was giving me an issue 
+	//Figured out how to combine the uppercase and lowercase by using the .toUpperCase command
 	  function btnEnter_click() {
             var userText = document.getElementById("txtCommand").value;
-            var response = "";
-            if (userText === "N") {
-                response = btnNorth_click()
+            userText = userText.toUpperCase() 
+         
+		 if (userText === "N") {
+               btnNorth_click()
             } else {
                 if (userText === "S") {
-                    response = btnSouth_click()
+                    btnSouth_click()
                 } else {
                     if (userText === "E") {
-                        response = btnEast_click()
+                      btnEast_click()
                     } else {
                         if (userText === "W") {
-                            response = btnWest_click()
-                        } else {
-                          if (userText === "n") {
-							response = btnNorth_click()
-							} else {
-								if (userText === "s") {
-									response = btnSouth_click()
-								} else {
-									if (userText === "e") {
-										response = btnEast_click()
-									} else {
-										if (userText === "w") {
-											response = btnWest_click()
-										} else {
+                            btnWest_click()
+                   		} else {
                             var target = document.getElementById("textarea");
 							target.value = "Sorry that is not a correct command. Only N, S, E, W, n, s, e,and w are accepted."
-      
-									}
-								}
-							}
-						}
-					}
+      				}
 				}
 			}
         }
     }
-   
+
+	function init() {
+		look();
+	}
+
+  // Fixed the issue with the double messages and limited it down to one and removed the score function
 	function start() {
 			var message = "You awake to find yourself lost on an island you have never seen before. As you begin to move you have a choice on where to go.";
 			UpdateDisplay(message);
 			if (Location0 ==0) {
-				score +=5;
-				document.getElementById("score").innerHTML = score;
 				Location0 = 1;
 				} else {
-				var message = "You awake to find yourself lost on an island you have never seen before. As you begin to move you have a choice on where to go.";
 				UpdateDisplay(message);
 				}
 		}
@@ -99,170 +86,104 @@
 			var message = "As you walk North you begin to see the beginning of a jungle. You think you smell smoke to a campfire but, you are unsure if you should push on.";
 			UpdateDisplay(message);
 			 if (Location1 == 0) {
-                    score += 5;
-                    document.getElementById("score").innerHTML = score;
-                    Location1 = 1;
+                 Location1 = 1;
                 } else {
-                    var message = "As you walk North you begin to see the beginning of a jungle. You think you smell smoke to a campfire but, you are unsure if you should push on.";
-					UpdateDisplay(message);
+                UpdateDisplay(message);
 				}
 		}
-		function North2 ()	{
+		function Goal ()	{
 			var message = "You stumble upon what seems to be a cabin and find tools to help you survive. Congratulations!";
 			UpdateDisplay(message);
 			 if (Location5 == 0) {
-                    score += 5;
-                    document.getElementById("score").innerHTML = score;
-                    Location5 = 1;
+                 Location5 = 1;
                 } else {
-                    var message = "You stumble upon what seems to be a cabin and find tools to help you survive. Congratulations!";
-					UpdateDisplay(message);
+                UpdateDisplay(message);
 				}
 		}
 		function South ()	{
 			var message = "This brings you back to the beachhead with nothing for miles out to sea.";
 			UpdateDisplay(message);
 			 if (Location2 == 0) {
-                    score += 5;
-                    document.getElementById("score").innerHTML = score;
-                    Location2 = 1;
+                 Location2 = 1;
                 } else {
-					var message = "This brings you back to the beachhead with nothing for miles out to sea.";
-					UpdateDisplay(message); 
+				UpdateDisplay(message); 
 				}
 		}
 		function East ()	{
 			var message = "The mountain in the East becomes bigger and bigger as you keep walking which doesn't allow you to walk any further.";
 			UpdateDisplay(message);
 			 if (Location3 == 0) {
-                    score += 5;
-                    document.getElementById("score").innerHTML = score;
-                    Location3 = 1;
+                 Location3 = 1;
                 } else {
-					var message = "The mountain in the East becomes bigger and bigger as you keep walking which doesn't allow you to walk any further.";
-					UpdateDisplay(message);
+				UpdateDisplay(message);
 				}
 		}
 		function West ()	{
 			var message = "You find what appears to be some sort of shelter, however there is nothing left."
 			UpdateDisplay(message);
 			 if (Location4 == 0) {
-                    score += 5;
-                    document.getElementById("score").innerHTML = score;
-                    Location4 = 1;
+                 Location4 = 1;
                 } else {
-                var message = "You find what appears to be some sort of shelter, however there is nothing left."
-				UpdateDisplay(message);
+               	UpdateDisplay(message);
 				}
-		}
-
+			}
+		//Removed the extra look functions
 		//North Button
         function btnNorth_click() {
             if (currentLoc === 0) {
                 currentLoc = 1;
-                look();
-                document.getElementById("btnEast").disabled = true;
-                document.getElementById("btnWest").disabled = true;
-                document.getElementById("btnSouth").disabled = false;
-                document.getElementById("btnNorth").disabled = false;
             } else {
                 if (currentLoc === 1) {
                     currentLoc = 5;
-                    look();
-                    document.getElementById("btnEast").disabled = true;
-                    document.getElementById("btnWest").disabled = true;
-                    document.getElementById("btnSouth").disabled = false;
-                    document.getElementById("btnNorth").disabled = true;
                 } else {
                     if (currentLoc === 2) {
                         currentLoc = 0;
-                        look();
-                        document.getElementById("btnEast").disabled = false;
-                        document.getElementById("btnWest").disabled = false;
-                        document.getElementById("btnSouth").disabled = false;
-                        document.getElementById("btnNorth").disabled = false;
-                    }
+					}
                 }
             }
             look();
         }
+		
         //South Button
         function btnSouth_click() {
             if (currentLoc === 0) {
                 currentLoc = 2;
-                look();
-                document.getElementById("btnEast").disabled = true;
-                document.getElementById("btnWest").disabled = true;
-                document.getElementById("btnSouth").disabled = true;
-                document.getElementById("btnNorth").disabled = false;
-            } else {
+			} else {
                 if (currentLoc === 5) {
                     currentLoc = 1;
-                    look();
-                    document.getElementById("btnEast").disabled = true;
-                    document.getElementById("btnWest").disabled = true;
-                    document.getElementById("btnSouth").disabled = false;
-                    document.getElementById("btnNorth").disabled = false;
-                } else {
+				} else {
                     if (currentLoc === 1) {
                         currentLoc = 0;
-                        look();
-                        document.getElementById("btnEast").disabled = false;
-                        document.getElementById("btnWest").disabled = false;
-                        document.getElementById("btnSouth").disabled = false;
-                        document.getElementById("btnNorth").disabled = false;
-                    }
+            		}
                 }
             }
             look();
         }
+		
         //East Button
         function btnEast_click() {
             if (currentLoc === 0) {
                 currentLoc = 3;
-                look();
-                document.getElementById("btnEast").disabled = true;
-                document.getElementById("btnWest").disabled = false;
-                document.getElementById("btnSouth").disabled = true;
-                document.getElementById("btnNorth").disabled = true;
             } else {
                 if (currentLoc === 4) {
                     currentLoc = 0;
-                    look();
-                    document.getElementById("btnEast").disabled = false;
-                    document.getElementById("btnWest").disabled = false;
-                    document.getElementById("btnSouth").disabled = false;
-                    document.getElementById("btnNorth").disabled = false;
-                
-                   
-                }
+            	}
             }
             look();
         }
+		
         //West Button
         function btnWest_click() {
             if (currentLoc === 0) {
                 currentLoc = 4;
-                look();
-                document.getElementById("btnEast").disabled = false;
-                document.getElementById("btnWest").disabled = true;
-                document.getElementById("btnSouth").disabled = true;
-                document.getElementById("btnNorth").disabled = true;
-            } else {
+			} else {
                 if (currentLoc === 3) {
                     currentLoc = 0;
-                    look();
-                    document.getElementById("btnEast").disabled = false;
-                    document.getElementById("btnWest").disabled = false;
-                    document.getElementById("btnSouth").disabled = false;
-                    document.getElementById("btnNorth").disabled = false;
-                
                 }
             }
             look();
         }
         function look() {
-            var desc = "";
             switch (currentLoc) {
                 case 0: start();
                     
@@ -279,7 +200,7 @@
                 case 4: West();
                     
                     break;
-                case 5: North2();
+                case 5: Goal();
                    
                     break;
             }
@@ -287,6 +208,7 @@
         function UpdateDisplay(TAmsg) {
             var taMain = document.getElementById("textarea");
             taMain.value = TAmsg
+	
         }
     </script>
      
@@ -297,7 +219,7 @@
 	<br/><br/>
     <input type="text" id="txtCommand" name="txtCommand">
     <input type="button" value="Go" onclick="btnEnter_click();" />
-    <p>Your Score is <a id="score">0</a> points!</p>
+    
  <p> Shoot me an <a href ="mailto:ayden.dillon1@marist.edu">e-mail</a> to let me know how I did </p>
 		</div>
 
