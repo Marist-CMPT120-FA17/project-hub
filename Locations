@@ -1,0 +1,93 @@
+//The functions that are called to display on the text box
+//Had trouble figuring out how to call the functions from a seperate tab until script scr was used
+//
+        function start() {
+			var message = "You awake to find yourself lost on an island you have never seen before. As you begin to move you have a choice on where to go.";
+			UpdateDisplay(message);
+			document.getElementById("btnNorth").disabled = false;
+			document.getElementById("btnSouth").disabled = false;
+			document.getElementById("btnEast").disabled = false;
+			document.getElementById("btnWest").disabled = false;
+		look();
+		}
+		function North ()	{
+			var message = "As you walk North you begin to see the beginning of a jungle. You think you smell smoke to a campfire but, you are unsure if you should push on.";
+			UpdateDisplay(message);
+			document.getElementById("btnNorth").disabled = true;
+			document.getElementById("btnSouth").disabled = false;
+			document.getElementById("btnEast").disabled = false;
+			document.getElementById("btnWest").disabled = false;
+		look();
+		}
+		function Goal ()	{
+			var message = "You stumble upon what seems to be a cabin and find tools to help you survive. Congratulations!";
+			UpdateDisplay(message);
+			document.getElementById("btnNorth").disabled = true;
+			document.getElementById("btnSouth").disabled = true;
+			document.getElementById("btnEast").disabled = true;
+			document.getElementById("btnWest").disabled = false;
+		look();
+		}
+		function South ()	{
+			var message = "This brings you back to the beachhead with nothing for miles out to sea.";
+			UpdateDisplay(message);
+			document.getElementById("btnNorth").disabled = false;
+			document.getElementById("btnSouth").disabled = true;
+			document.getElementById("btnEast").disabled = false;
+			document.getElementById("btnWest").disabled = false;
+		look();
+		}
+		function East ()	{
+			var message = "The mountain in the East becomes bigger and bigger as you keep walking which doesn't allow you to walk any further.";
+			UpdateDisplay(message);
+			document.getElementById("btnNorth").disabled = false;
+			document.getElementById("btnSouth").disabled = false;
+			document.getElementById("btnEast").disabled = true;
+			document.getElementById("btnWest").disabled = false;
+		look();
+		}
+		function West ()	{
+			var message = "You find what appears to be some sort of shelter, however there is nothing left."
+			UpdateDisplay(message);
+			document.getElementById("btnNorth").disabled = false;
+			document.getElementById("btnSouth").disabled = false;
+			document.getElementById("btnEast").disabled = false;
+			document.getElementById("btnWest").disabled = true;
+		look();
+		}
+		function Northeast () {
+			var message = "You begin to smell the smoke more strongly as you move on."
+			UpdateDisplay(message);
+			document.getElementById("btnNorth").disabled = true;
+			document.getElementById("btnSouth").disabled = false;
+			document.getElementById("btnEast").disabled = false;
+			document.getElementById("btnWest").disabled = false;
+		look();
+		}
+		function Northwest () {
+			var message = "The ground becomes softer and you realise that you are surrounded by quicksand. You should probably turn back."
+			UpdateDisplay(message);
+			document.getElementById("btnNorth").disabled = true;
+			document.getElementById("btnSouth").disabled = false;
+			document.getElementById("btnEast").disabled = false;
+			document.getElementById("btnWest").disabled = true;
+		look();
+		}	
+		function Southeast () {
+			var message = "In the distance you see a port that perhaps held ships at one time."
+			UpdateDisplay(message);
+			document.getElementById("btnNorth").disabled = false;
+			document.getElementById("btnSouth").disabled = true;
+			document.getElementById("btnEast").disabled = true;
+			document.getElementById("btnWest").disabled = false;
+		look()
+		}
+		function Southwest () {
+			var message = "You come across a shipwreck that appears to have very little left."
+			UpdateDisplay(message);
+			document.getElementById("btnNorth").disabled = false;
+			document.getElementById("btnSouth").disabled = true;
+			document.getElementById("btnEast").disabled = false;
+			document.getElementById("btnWest").disabled = true;
+		look();
+			}
