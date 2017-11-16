@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<!-- Ayden Dillon Project 4 v.06 -->  
+  <meta charset = "utf-8">
+  <head>
+   	<title>Stuck on an Island</title>
+			<style type = "text/css">
+			   div     { text-align: center;
+			             width: 50%
+						 position: relative;
+						 left: 25%
+						 border-width: 5px; }
+			   .dashed { border-style: dashed; }
+			   .blue { border-color: blue; }
+			</style>
+		</head>
+	<body onload="start()";">
+			<!--This is the beginning of the project with the title-->
+			<div class = "blue dashed"><p style="font-size: 24pt; color:green;">Welcome to the Unknown Island
+			</p>
+			<br/>
+			<p style="font-size: 18pt; color:green;"> Begin Your Adventure Here
+			</p>
+			<br/>
+			<br/>
+			<textarea name="textarea" id = "textarea" readonly rows="20" cols="35">You awake to find yourself lost on an island you have never seen before. As you begin to move you have a choice on where to go.
+			</textarea>
+			<br/>
+
+
+    <script src = "locations.js"></script>
+
+
+	
+    
+         
+    <input type="text" id="txtCommand" name="txtCommand">
+    <input type="button" value="Go" onclick="btnEnter_click();" />
+    <input type="button" value="Help" onclick="btnHelp_click();" />
+	<br>
+	<br>
+    <input type="button" id= "btnNorth" value= "North" onclick= "btnNorth_click()">
+    <input type="button" id= "btnSouth" value= "South" onclick= "btnSouth_click()">
+	<input type="button" id= "btnEast" value= "East" onclick= "btnEast_click()">
+    <input type="button" id= "btnWest" value= "West" onclick= "btnWest_click()">
+    <br>
+	<button id="Inventorybutton" onclick="myListFunction()">Inventory</button>
+    <button id="Takebutton" onclick="myTakeFunction()">Take</button>
+    <p> Shoot me an <a href ="mailto:ayden.dillon1@marist.edu">e-mail</a> to let me know how I did </p>
+		</div>
+	<center><img src="finalmap.jpg" alt="Map" style="width: 600px; height: 400px"/></center>
+  </body>
+</html>
