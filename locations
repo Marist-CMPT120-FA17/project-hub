@@ -1,0 +1,353 @@
+//Location Arrays
+    Location[0] = start;
+    Location[1] = North;
+    Location[2] = South; 
+    Location[3] = East; 
+    Location[4] = West;
+    Location[5] = Goal;
+    Location[6] = Northeast;
+    Location[7] = Northwest;
+    Location[8] = Southeast;
+    Location[9] = Southwest;
+// Item Array
+	
+	items [8] = pocket knife; 
+    items [1] = compass;
+    items [9] = duct tape;
+    items [5] = shovel;
+
+
+
+    function Location (id, name, desc, item){
+        this.id = id;
+        this.name = name;
+        this.desc = desc;
+        this.item = item;
+        this.visited = visited;
+        function toString() {
+        return name + desc;
+        }
+
+	 //Creating a prototype for each of the locations 
+    var start = new Location (0, "start", "You awake to find yourself lost on an island you have never seen before. As you begin to move you have a choice on where to go.", null);
+    var North = new Location (1, "North", "As you walk North you begin to see the beginning of a jungle. You think you smell smoke to a campfire but, you are unsure if you should push on.", null);
+    var Goal = new Location (5, "Goal", "You stumble upon what seems to be a cabin and find tools to help you survive. Congratulations!", null);
+    var South = new Location (2, "South", "This brings you back to the beachhead with nothing for miles out to sea.", null);
+    var East = new Location (3, "East",  "The mountain in the East becomes bigger and bigger as you keep walking which doesn't allow you to walk any further.", null);
+    var West = new Location (4, "West", "You find what appears to be some sort of shelter, however there is nothing left.", null);
+    var Northeast = new Location (6, "Northeast", "You begin to smell the smoke more strongly as you move on.", null);
+    var Northwest = new Location (7, "Northwest", "The ground becomes softer and you realise that you are surrounded by quicksand. You should probably turn back.", null);
+    var Southeast = new Location (8, "Southeast", "In the distance you see a port that perhaps held ships at one time.", null);
+    var Southwest = new Location (9, "Southwest", "You come across a shipwreck that appears to have very little left.", null);
+
+	var Location = [start, North, Goal, South, East, West, Northeast, Northwest, Southeast, Southwest]
+
+  function Location (id, name, desc){
+        this.id = id;
+        this.name = name;
+        this.desc = desc;
+        this.visited = visited;
+        function toString() {
+        return this.desc;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		//Beginning of the switch-case for the functions and just named them the cardinal directions with the exception of the "goal" area
+		var currentLoc = 0;
+       
+        function init() {
+            look();
+        }
+		  function look() {
+            var message ="";
+			switch (currentLoc) {
+                case 0: start();
+                break;
+                case 1: North();
+                break;
+                case 2: South();
+                break;
+                case 3: East();
+                break; 
+                case 4: West();
+                break;
+                case 5: Goal();
+                break;
+				case 6: Northeast();
+				break;
+				case 7: Northwest();
+				break;
+				case 8: Southeast();
+				break;
+				case 9: Southwest();
+				break;
+				default: "You can not move in that direction"
+					break;
+				}
+				}
+		
+		
+		
+    //*Had to divide the buttons by lowercase and uppercase because together it was giving me an issue 
+	//Figured out how to combine the uppercase and lowercase by using the .toUpperCase command
+	  function btnEnter_click() {
+            var userText = document.getElementById("txtCommand").value;
+            userText = userText.toUpperCase() 
+         
+		 if (userText === "N") {
+               btnNorth_click()
+            } else {
+                if (userText === "S") {
+                    btnSouth_click()
+                } else {
+                    if (userText === "E") {
+                      btnEast_click()
+                    } else {
+                        if (userText === "W") {
+                            btnWest_click()
+                   		} else {
+                            var target = document.getElementById("textarea");
+							target.value = "Sorry that is not a correct command. Only N, S, E, W, n, s," + " e,and w are accepted."
+      				}
+				}
+			}
+        }
+    }
+
+	
+        
+      function btnNorth_click() {
+        if (currentLoc === 0) {
+            currentLoc = 1;
+            look();
+        } else if (currentLoc === 2) {
+            currentLoc = 0;
+            look();
+        } else if (currentLoc === 9) {
+            currentLoc = 4;
+            look();
+        } else if (currentLoc === 8) {
+            currentLoc = 3;
+            look();
+        } else if (currentLoc === 4) {
+            currentLoc = 7;
+            look();
+        } else if (currentLoc === 3) {
+            currentLoc = 6;
+            look();
+        } else {
+            UpdateDisplay("There is nothing else to the North.");
+        }
+        }
+      function btnSouth_click() {
+        if (currentLoc === 0) {
+            currentLoc = 2;
+            look();
+        } else 
+			if (currentLoc === 1) {
+            currentLoc = 0;
+            look();
+        } else 
+			if (currentLoc === 7) {
+            currentLoc = 4;
+            look();
+        } else 
+			if (currentLoc === 4) {
+            currentLoc = 9;
+            look();
+        } else 
+			if (currentLoc === 6) {
+            currentLoc = 3;
+            look();
+        } else 
+			if (currentLoc === 3) {
+            currentLoc = 8;
+            look();
+        } else {
+            UpdateDisplay("There is nothing else to the South.");
+        }
+		}
+      function btnEast_click() {
+        if (currentLoc === 0) {
+            currentLoc = 3;
+            look();
+        } else 
+			if (currentLoc === 4) {
+            currentLoc = 0;
+            look();
+        } else 
+			if (currentLoc === 9) {
+            currentLoc = 2;
+            look();
+        } else 
+			if (currentLoc === 2) {
+            currentLoc = 8;
+            look();
+        } else 
+			if (currentLoc === 7) {
+            currentLoc = 1;
+            look();
+        } else 
+			if (currentLoc === 1) {
+            currentLoc = 6;
+            look();
+		} else 
+			if (currentLoc === 6) {
+			currentLoc = 5;
+			look();
+		} else {
+            UpdateDisplay("There is nothing else to the East.");
+        }
+		}
+      function btnWest_click() {
+			if (currentLoc === 0) {
+            currentLoc = 4;
+            look();
+        } else 
+			if (currentLoc === 3) {
+            currentLoc = 0;
+            look();
+        } else 
+			if (currentLoc === 5) {
+            currentLoc = 6;
+            look();
+        } else 
+			if (currentLoc === 6) {
+            currentLoc = 1;
+            look();
+        } else 
+			if (currentLoc === 1) {
+            currentLoc = 7;
+            look();
+        } else 
+			if (currentLoc === 8) {
+            currentLoc = 2;
+            look();
+		} else 
+			if (currentLoc === 2) {
+			currentLoc = 9;
+			look();
+        } else {
+            UpdateDisplay("There is nothing else to the West.");
+        }
+		}
+  
+   
+      function UpdateDisplay(TAmsg) {
+          var taMain = document.getElementById("textarea");
+          taMain.value = TAmsg
+      }
+	  function btnHelp_click() {
+	    var message = "The directions of this game are limited to N, S, E, W, and the lowercase counterparts."; 
+		alert(message);
+		}
+
+
+//The functions that are called to display on the text box
+//Had trouble figuring out how to call the functions from a seperate tab until script scr was used
+//
+        function start() {
+			var message = "You awake to find yourself lost on an island you have never seen before. As you begin to move you have a choice on where to go.";
+			UpdateDisplay(message);
+			document.getElementById("btnNorth").disabled = false;
+			document.getElementById("btnSouth").disabled = false;
+			document.getElementById("btnEast").disabled = false;
+			document.getElementById("btnWest").disabled = false;
+		look();
+		}
+		function North ()	{
+			var message = "As you walk North you begin to see the beginning of a jungle. You think you smell smoke to a campfire but, you are unsure if you should push on.";
+			UpdateDisplay(message);
+			document.getElementById("btnNorth").disabled = true;
+			document.getElementById("btnSouth").disabled = false;
+			document.getElementById("btnEast").disabled = false;
+			document.getElementById("btnWest").disabled = false;
+		look();
+		}
+		function Goal ()	{
+			var message = "You stumble upon what seems to be a cabin and find tools to help you survive. Congratulations!";
+			UpdateDisplay(message);
+			document.getElementById("btnNorth").disabled = true;
+			document.getElementById("btnSouth").disabled = true;
+			document.getElementById("btnEast").disabled = true;
+			document.getElementById("btnWest").disabled = false;
+		look();
+		}
+		function South ()	{
+			var message = "This brings you back to the beachhead with nothing for miles out to sea.";
+			UpdateDisplay(message);
+			document.getElementById("btnNorth").disabled = false;
+			document.getElementById("btnSouth").disabled = true;
+			document.getElementById("btnEast").disabled = false;
+			document.getElementById("btnWest").disabled = false;
+		look();
+		}
+		function East ()	{
+			var message = "The mountain in the East becomes bigger and bigger as you keep walking which doesn't allow you to walk any further.";
+			UpdateDisplay(message);
+			document.getElementById("btnNorth").disabled = false;
+			document.getElementById("btnSouth").disabled = false;
+			document.getElementById("btnEast").disabled = true;
+			document.getElementById("btnWest").disabled = false;
+		look();
+		}
+		function West ()	{
+			var message = "You find what appears to be some sort of shelter, however there is nothing left."
+			UpdateDisplay(message);
+			document.getElementById("btnNorth").disabled = false;
+			document.getElementById("btnSouth").disabled = false;
+			document.getElementById("btnEast").disabled = false;
+			document.getElementById("btnWest").disabled = true;
+		look();
+		}
+		function Northeast () {
+			var message = "You begin to smell the smoke more strongly as you move on."
+			UpdateDisplay(message);
+			document.getElementById("btnNorth").disabled = true;
+			document.getElementById("btnSouth").disabled = false;
+			document.getElementById("btnEast").disabled = false;
+			document.getElementById("btnWest").disabled = false;
+		look();
+		}
+		function Northwest () {
+			var message = "The ground becomes softer and you realise that you are surrounded by quicksand. You should probably turn back."
+			UpdateDisplay(message);
+			document.getElementById("btnNorth").disabled = true;
+			document.getElementById("btnSouth").disabled = false;
+			document.getElementById("btnEast").disabled = false;
+			document.getElementById("btnWest").disabled = true;
+		look();
+		}	
+		function Southeast () {
+			var message = "In the distance you see a port that perhaps held ships at one time."
+			UpdateDisplay(message);
+			document.getElementById("btnNorth").disabled = false;
+			document.getElementById("btnSouth").disabled = true;
+			document.getElementById("btnEast").disabled = true;
+			document.getElementById("btnWest").disabled = false;
+		look()
+		}
+		function Southwest () {
+			var message = "You come across a shipwreck that appears to have very little left."
+			UpdateDisplay(message);
+			document.getElementById("btnNorth").disabled = false;
+			document.getElementById("btnSouth").disabled = true;
+			document.getElementById("btnEast").disabled = false;
+			document.getElementById("btnWest").disabled = true;
+		look();
+}
